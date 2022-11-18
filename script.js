@@ -39,28 +39,21 @@ buttons.forEach((button) => {
         if(button.className === "operand" || (button.value === "-" && displayValue === "" && firstValue === null)){
             displayValue += button.value;
             mainDisplay.innerHTML = displayValue;
-            console.log(`Display Value: ${displayValue}`);
         }else if(button.className === "operator"){
             if(firstValue === null){
-                firstValue = displayValue;
+                button.value === "=" ? firstValue = null : firstValue = displayValue;
                 displayValue = "";
                 operand = button.value;
                 dotOn = false;
-                console.log(`type 1 First Value: ${firstValue}`);
-                console.log(`type 1 Second Value: ${secondValue}`);
-                console.log(`type 1 Display Value: ${displayValue}`);
             }else if(operand !== button.value || (operand !== "*" && operand !== "/")){
                 displayValue === "" ? secondValue = null : secondValue = displayValue;
-                if(operand !== "="){ result = operate(operand, firstValue, secondValue); }
+                if(operand !== "="){ result = operate(operand, firstValue, secondValue); } 
                 mainDisplay.innerHTML = result;
                 firstValue = result;
                 operand = button.value;
                 secondValue = null;    
                 displayValue = "";
                 dotOn = false;
-                console.log(`First Value: ${firstValue}`);
-                console.log(`Second Value: ${secondValue}`);
-                console.log(`Display Value: ${displayValue}`);
             }
         }else if(button.className === "other"){
             if(button.value === "clear"){
