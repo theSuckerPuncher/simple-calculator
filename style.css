@@ -60,7 +60,6 @@ html, body {
     margin-top: 5px;
 }
 
-
 .board button {
     width: 25%;
     height: 20%;
@@ -68,15 +67,12 @@ html, body {
     color: #D3CFC9;
 }
 
-#clear-btn {
-    width: 100%;
+#clear-btn, #zero-btn{
+    width: 50%;
 }
-
 
 .screen {
     flex-direction: column;
     height: 20%;
     width: 100%;
 }
-
-
