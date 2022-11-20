@@ -7,24 +7,24 @@ let dotOn = false;
 let minusOn = false;
 
 const buttons = document.querySelectorAll('button');
-const mainDisplay = document.querySelector('.main');
+const mainDisplay = document.querySelector('.mainScreen');
 
 function add(x, y){
-    return (Number(x) + Number(y)).toFixed(2);
+    return Number((Number(x) + Number(y)).toFixed(5));
 }
 
 function subtract(x, y){
-    return (Number(x) - Number(y)).toFixed(2);
+    return Number((Number(x) - Number(y)).toFixed(5));
 }
 
 function multiply(x, y){
     if(y === null){ y = 1; }
-    return (Number(x) * Number(y)).toFixed(2);
+    return Number((Number(x) * Number(y)).toFixed(5));
 }
 
 function divide(x, y){
     if(y === null){ y = 1; }
-    return (Number(x) / Number(y)).toFixed(2);
+    return Number((Number(x) / Number(y)).toFixed(2));
 }
 
 function operate(operator, x, y){
