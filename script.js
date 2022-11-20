@@ -10,21 +10,21 @@ const buttons = document.querySelectorAll('button');
 const mainDisplay = document.querySelector('.main');
 
 function add(x, y){
-    return Number(x) + Number(y);
+    return (Number(x) + Number(y)).toFixed(2);
 }
 
 function subtract(x, y){
-    return Number(x) - Number(y);
+    return (Number(x) - Number(y)).toFixed(2);
 }
 
 function multiply(x, y){
     if(y === null){ y = 1; }
-    return Number(x) * Number(y);
+    return (Number(x) * Number(y)).toFixed(2);
 }
 
 function divide(x, y){
     if(y === null){ y = 1; }
-    return Number(x) / Number(y);
+    return (Number(x) / Number(y)).toFixed(2);
 }
 
 function operate(operator, x, y){
