@@ -4,6 +4,7 @@ let secondValue = null;
 let result = null;
 let operand = "";
 let dotOn = false;
+let minusOn = false;
 
 const buttons = document.querySelectorAll('button');
 const mainDisplay = document.querySelector('.main');
@@ -34,9 +35,10 @@ function operate(operator, x, y){
     return "LOL"
 }
 
+
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
-        if(button.className === "operand" || (button.value === "-" && displayValue === "" && firstValue === null)){
+        if(button.className === "operand"){
             displayValue += button.value;
             mainDisplay.innerHTML = displayValue;
         }else if(button.className === "operator"){
@@ -45,6 +47,7 @@ buttons.forEach((button) => {
                 displayValue = "";
                 operand = button.value;
                 dotOn = false;
+                minusOn = false;
             }else if(operand !== button.value || (operand !== "*" && operand !== "/")){
                 displayValue === "" ? secondValue = null : secondValue = displayValue;
                 if(operand !== "="){ result = operate(operand, firstValue, secondValue); } 
@@ -54,6 +57,7 @@ buttons.forEach((button) => {
                 secondValue = null;    
                 displayValue = "";
                 dotOn = false;
+                minusOn = false;
             }
         }else if(button.className === "other"){
             if(button.value === "clear"){
@@ -63,14 +67,24 @@ buttons.forEach((button) => {
                 result = null;
                 operand = "";
                 mainDisplay.innerHTML = displayValue;
+                dotOn = false;
+                minusOn = false;
             }else if(button.value === "delete" && operand !== "="){  
                 displayValue = displayValue.slice(0, -1);
                 mainDisplay.innerHTML = displayValue
-            }else if(button.value === "."){
-                if(!dotOn && displayValue !== ""){
+            }else if(button.value === "." && (dotOn === false || displayValue === "")){
                     displayValue += '.';
                     mainDisplay.innerHTML = displayValue;
                     dotOn = true;
+            }else if(button.value === "sign"){
+                if(!minusOn){
+                    displayValue = displayValue.replace(/^/,'-');
+                    mainDisplay.innerHTML = displayValue;
+                    minusOn = true;
+                }else{
+                    displayValue = '' + displayValue.substring(1);
+                    mainDisplay.innerHTML = displayValue;
+                    minusOn = false;
                 }
             }
         }
